@@ -1,28 +1,2 @@
 /* ------------------ FONTS ------------------ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-/* ------------------ VARIABLES ------------------ */
-:root{
-  --light-color: #FFFFFF;
-  --dark-color: #18181b;
-}
-
-/* ------------------ GLOBAL ------------------ */
-*{
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-
-body{
-  color: var(--light-color);
-  background-color: var(--dark-color);
-}
-
-.content{
-  max-width: 1600px;
-  padding: 0 40px;
-  margin: auto;
-}
