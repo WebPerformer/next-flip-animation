@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 
 // Locomotive Scroll
 import { LocomotiveScrollProvider } from "react-locomotive-scroll"
@@ -12,46 +12,34 @@ export default function Home() {
 
   const gallery = useRef(null)
   const galleryContainer = useRef(null)
-  const btnRef = useRef(null)
+
+  const [flip, setFlip] = useState(false)
+
+  gsap.registerPlugin(Flip, CustomEase)
 
   useEffect(() => {
-    gsap.registerPlugin(Flip)
-
     CustomEase.create("cubic", "0.83, 0, 0.17, 1")
-    const gallery = galleryContainer.current,
+    const galleryScroll = galleryContainer.current,
     images = gsap.utils.toArray(".img")
+    
+    let state = Flip.getState(".img-gallery-container .img")
 
-    btnRef.current.addEventListener("click", () => {
-      let state = Flip.getState(".img-gallery-container .img")
-      
-      gallery.classList.toggle("order")
-      images.forEach((img, i) => {
-        img.classList.toggle("reorder")
-      })
+    galleryScroll.classList.toggle("order")
 
-      Flip.from(state, {
-        absolute: true,
-        duration: 2,
-        stagger: 0.05,
-        ease: "cubic"
-      })
+    images.forEach((img, i) => {
+      img.classList.toggle("reorder")
     })
-  }, [])
+
+    Flip.from(state, {
+      absolute: true,
+      duration: 2,
+      stagger: 0.05,
+      ease: "cubic"
+    })
+  }, [flip])
 
   return (
-    <LocomotiveScrollProvider
-      options={
-        {
-          smooth: true
-        }
-      }
-      watch={
-        [
-
-        ]
-      }
-      galleryContainer={galleryContainer.current}
-    >
+    <>
       <div className="img-gallery" data-scroll-container ref={galleryContainer}>
         <div className="img-gallery-container" data-scroll ref={gallery}>
           <div className="img">
@@ -71,7 +59,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="btn" ref={btnRef}>Flip Layout</div>
-    </LocomotiveScrollProvider>
+      <div className="btn" onClick={() => setFlip(!flip)}>Flip Layout</div>
+    </>
   )
 }
