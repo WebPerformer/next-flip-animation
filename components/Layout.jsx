@@ -5,7 +5,7 @@ function Layout({ children }) {
   return (
     <div className="layout">
         <Head>
-          <title>Next.js Template</title>
+          <title>Flip Animation</title>
         </Head>
         <header></header>
         <main className="main-container">
