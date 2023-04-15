@@ -40,8 +40,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="img-gallery" data-scroll-container ref={galleryContainer}>
-        <div className="img-gallery-container" data-scroll ref={gallery}>
+      <div className="img-gallery reorder" data-scroll-container ref={galleryContainer}>
+        <div className="img-gallery-container">
           <div className="img">
             <img src="https://images.pexels.com/photos/15873635/pexels-photo-15873635.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="" />
           </div>
